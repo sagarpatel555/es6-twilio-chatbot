@@ -28,6 +28,7 @@ export default class Game{
             case GameState.GRAVE:
                 if(sInput.toLowerCase().match("1234")){
                     sReply = "Great, would you like to deposit, withdraw, check balance or do something else?";
+                    sInput = this.sInput;
                     if(sInput.toLowerCase().match("deposit")){
                         this.stateCur = GameState.DEPOSIT;
                     }
