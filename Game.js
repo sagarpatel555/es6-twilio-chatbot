@@ -26,20 +26,25 @@ export default class Game{
                 this.stateCur = GameState.GRAVE;
                 break;
             case GameState.GRAVE:
-                  switch(this.sInput)
-                    {
-                        case deposit:
-                            this.stateCur = GameState.DEPOSIT;
-                            break;
-                        case withdraw:
-                            this.stateCur = GameState.WITHDRAW;
-                            break;
-                        case balance:
-                            this.stateCur = GameState.BALANCE;
-                            break;
-                        
-                            
+                if(sInput.toLowerCase().match("1234")){
+                    sReply = "Great, would you like to deposit, withdraw, check balance or do something else?";
+                    if(sInput.toLowerCase().match("deposit")){
+                        this.stateCur = GameState.DEPOSIT;
                     }
+                    else if(sInput.toLowerCase().match("withdraw")){
+                        this.stateCur = GameState.WITHDRAW;
+                    }
+                    else if(sInput.toLowerCase().match("balance")){
+                        this.stateCur = GameState.BALANCE;
+                    }
+                    else{
+                        this.stateCur = GameState.ELSE;
+                    }
+                }
+                else{
+                    this.stateCur = GameState.WELCOMING;
+                }
+                break;
             case GameState.DEPOSIT:
                 sReply = "How much do you want to deposit?";
                 if(sInput.toLowerCase().match("/^[/d]$/")){
@@ -92,7 +97,7 @@ export default class Game{
                     else if(sInput.toLowerCase().match("question")){
                         this.stateCur = GameState.QUESTION;
                     }
-                    else if(sInput.toLowerCase().match("atm")){
+                    else{
                         this.stateCur = GameState.ATM;
                     }
                 }
