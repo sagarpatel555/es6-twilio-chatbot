@@ -37,7 +37,7 @@ export default class Game{
                     else if(sInput.toLowerCase().match("balance")){
                         this.stateCur = GameState.BALANCE;
                     }
-                    else if(sInput.toLowerCase().match("else")){
+                    else{
                         this.stateCur = GameState.ELSE;
                     }
                 }
