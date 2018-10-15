@@ -19,6 +19,7 @@ export default class Game{
     }
     
     makeAMove(sInput)
+    moveOne(yInput)
     {
         let sReply = "Hi I'm Igor, your spooky bank chat buddy. Can I have your grave number (enter 1234)?";
         switch(this.stateCur){
@@ -28,7 +29,7 @@ export default class Game{
             case GameState.GRAVE:
                 if(sInput.toLowerCase().match("1234")){
                     sReply = "Great, would you like to deposit, withdraw, check balance or do something else?";
-                    if(sInput.toLowerCase().match("deposit")){
+                    if(yInput.toLowerCase().match("deposit")){
                         this.stateCur = GameState.DEPOSIT;
                     }
                     else if(sInput.toLowerCase().match("withdraw")){
